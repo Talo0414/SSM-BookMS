@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyu.mapper.LendListMapper">
+    <update id="returnBookOne">
+        update library.lend_list
+        set back_date = now()
+        where book_id=#{bookId} and reader_id=#{readerId} and back_date is null
+    </update>
+    <update id="returnBookTwo" parameterType="_long">
+        update library.book_info
+        set number = number + 1
+        where book_id=#{bookId}
+    </update>
+    <insert id="lendBookOne" parameterType="map">
+        insert into library.lend_list
+        values(null , #{book_id} , #{reader_id} , now() , null)
+    </insert>
+    <update id="lendBookTwo" parameterType="_long">
+        update library.book_info
+        set number = number - 1
+        where book_id=#{bookId}
+    </update>
+    <select id="lendList" resultType="LendList">
+        select *
+        from library.lend_list
+    </select>
+    <select id="myLendList" resultType="LendList" parameterType="_long">
+        select *
+        from library.lend_list
+        where reader_id=#{readerId}
+    </select>
+    <delete id="deleteLend" parameterType="_long">
+        delete from library.lend_list where ser_num=#{serNum}
+    </delete>
+</mapper>

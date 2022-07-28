@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyu.mapper.ReaderCardMapper">
+    <select id="getIdMatchCount" parameterType="map" resultType="_int">
+        select count(*)
+        from library.reader_card
+        where reader_id=#{readerId} and password=#{password}
+    </select>
+    <select id="findReaderByReaderId" parameterType="_long" resultType="ReaderCard">
+        select *
+        from library.reader_card
+        where reader_id = #{readerId}
+    </select>
+    <update id="resetPassword" parameterType="map">
+        update library.reader_card
+        set password=#{password}
+        where reader_id=#{readerId}
+    </update>
+    <insert id="addReaderCard" parameterType="map">
+        insert into library.reader_card
+        value (#{readerId},#{username},#{password})
+    </insert>
+    <select id="getPassword" parameterType="_long" resultType="string">
+        select password from library.reader_card where reader_id=#{readerId}
+    </select>
+    <delete id="deleteReaderCard" parameterType="_long">
+        delete from library.reader_card where reader_id=#{readerId}
+    </delete>
+</mapper>

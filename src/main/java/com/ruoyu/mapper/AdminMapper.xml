@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyu.mapper.AdminMapper">
+    <select id="getAdmin" parameterType="_long" resultType="Admin">
+        select *
+        from admin
+        where admin_id=#{adminId}
+    </select>
+    <select id="getMatchCount" parameterType="map" resultType="int">
+        select count(*)
+        from library.admin
+        where admin_id=#{adminId} and password=#{password} ;
+    </select>
+    <update id="resetPassword" parameterType="map">
+        update library.admin
+        set password=#{password}
+        where admin_id=#{adminId} ;
+    </update>
+    <select id="getPassword" resultType="string" parameterType="_long">
+        select password
+        from library.admin
+        where admin_id=#{adminId} ;
+    </select>
+    <select id="getUsername" resultType="string" parameterType="_long">
+        select username
+        from library.admin
+        where admin_id=#{adminId} ;
+    </select>
+
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyu.mapper.ReaderInfoMapper">
+    <select id="getAllReaderInfo" resultType="ReaderInfo">
+        select *
+        from library.reader_info
+    </select>
+    <select id="findReaderInfoByReaderId" resultType="ReaderInfo" parameterType="_long">
+        select * from library.reader_info where reader_id=#{readerId}
+    </select>
+    <delete id="deleteReaderInfo" parameterType="_long">
+        delete from library.reader_info where reader_id=#{readerId}
+    </delete>
+    <update id="editReaderInfo" parameterType="ReaderInfo">
+        update library.reader_info
+        set name=#{name},sex=#{sex},birth=#{birth},address=#{address},phone=#{phone}
+        where reader_id = #{readerId}
+    </update>
+    <update id="editReaderCard" parameterType="ReaderInfo">
+        update library.reader_card
+        set username=#{name}
+        where reader_id=#{readerId}
+    </update>
+    <insert id="addReaderInfo" parameterType="ReaderInfo">
+        insert into library.reader_info
+        values(null,#{name},#{sex},#{birth},#{address},#{phone})
+    </insert>
+</mapper>

@@ -13,27 +13,27 @@
 - mapper：持久层
 - service：服务层
 
-- ![](show/img.png)
+- <img src="./show/img.png">
 
 ### 项目展示
 
 #### 管理员页面
 
-#### ![](show/img_1.png)
+#### <img src="./show/img_1.png">
 
-#### ![](show/img_2.png)
+#### <img src="./show/img_2.png">
 
-#### ![](show/img_3.png)
+#### <img src="./show/img_3.png">
 
 #### 读者页面
 
-#### ![](show/img_4.png)
+#### <img src="./show/img_4.png">
 
-#### ![](show/img_5.png)
+#### <img src="./show/img_5.png">
 
-#### ![](show/img_6.png)
+#### <img src="./show/img_6.png">
 
-#### ![](show/img_7.png)
+#### <img src="./show/img_7.png">
 
 
 
